@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="jwt-decode.js"></script>
+</head>
+<body>
+
+    <div id="g_id_onload"
+         data-client_id="1059825477818-qjv8799v8uqefmbnfq37upj4jqcg2uj9.apps.googleusercontent.com"
+         data-callback="handleCredentialResponse">
+    </div>
+    <!-- <script src="https://accounts.google.com/gsi/client" async defer></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jwt-decode@2.2.0/build/jwt-decode.min.js"></script> -->
+    
+    <script>
+        function handleCredentialResponse(response) {
+            var decodedToken = jwt_decode(response.credential);
+            // console.log(decodedToken.name);
+            // console.log(decodedToken.email);
+            alert(decodedToken.sub);
+            alert(decodedToken.name);
+            alert(decodedToken.email);
+        }
+    </script>
+</body>
+</html>

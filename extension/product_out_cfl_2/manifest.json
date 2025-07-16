@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+
+  "name": "product out cafelink",
+  "description": "This extension will convert all text on page to the word foot and change the background.",
+  "version": "1.0",
+
+  "browser_action": {
+   "default_icon": "foot.png",
+   "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": [
+   "tabs","activeTab","http://taobao1.cafelink.org/database.php"
+ ],
+  "host_permissions": [
+  "http://taobao1.cafelink.org/database.php",
+  "http://taobao1.cafelink.org/extension/product.php"
+],
+ "content_scripts": [
+    {
+     "matches": [
+       "<all_urls>"
+     ],
+     "js": ["content.js", "ckeditor.js"]
+    }
+  ]
+}

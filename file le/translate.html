@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+<iframe class="class-name" title="123">
+	
+</iframe>
+<iframe class="class-name" title="456">
+	
+</iframe>
+<p>If you click on me, I will disappear.</p>
+	<h1>tiếng anh</h1>
+	<ul>
+               <li class="translation-icons">
+                 <a href="javascript:void(0)" title="" data-placement="0">
+                   <img src="/images/ptd_vn.jpg" class=" ptd_lgue">VN
+                 </a>
+               </li>
+               <li class="translation-icons">
+                 <a href="javascript:void(0)" title="" data-placement="1">
+                   <img src="/images/ptd_en.jpg" class="ptd_lgue">EN
+                 </a>
+               </li>
+             </ul>
+
+<!-- phan google translate -->
+    <script type="text/javascript" 
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    </script>
+
+    <script type="text/javascript">
+        // $($('span:contains("Select Language")')[1]).html('English');
+    </script>
+    <!-- Code provided by Google -->
+       <div id="google_translate_element" style="display: none;"></div>
+
+    <!-- <div class="translation-icons">
+       <a href="#" class="nl" data-placement="0">en</a>
+       <a href="#" class="de" data-placement="1">zh</a>
+   </div> -->
+   <!-- //load the script of google   -->
+<script>
+ $(window).on('load', function () {
+      alert("Window Loaded");
+ });
+</script>
+
+<script>
+function googleTranslateElementInit() {
+new google.translate.TranslateElement({
+//defaultLanguage: 'en', 
+//pageLanguage: 'en', 
+includedLanguages: 'vi,en', 
+layout: google.translate.TranslateElement.InlineLayout.SIMPLE, 
+autoDisplay: false,
+multilanguagePage: true}, 'google_translate_element')
+};
+var clickCount = 0;
+
+$(document).ready(function(){
+  $("p").click(function(){
+    $(this).hide();
+  });
+
+  $('.translation-icons a').click(function(e) {
+    e.preventDefault();
+    // alert('tuan');
+	
+    var d = 0;
+    var title = '';
+    // var $frame = $('.goog-te-menu-frame:first');
+    // var $frame = $('.class-name').first();
+    var $frame1 = $('.skiptranslate');
+    // alert($frame.length);
+    for (var i=0;i<$frame1.length;i++) {
+    	// alert($frame.eq(i).attr('title'));
+      title = $frame1.eq(i).attr('title');
+      if (title == undefined) {
+        // d = i;
+        // break;
+      } else {
+        d = i;
+        break;
+      }
+    }
+    var $frame = $('iframe').eq(d);
+
+
+    
+// alert(d);
+// alert($frame.attr('title'));
+    // if (!$frame.size()) {
+    //     alert("Error: Could not find Google translate frame.");
+    //     return false;
+    //     }
+// alert('tuan1');
+     //find the a links element inside the gtranlate first frame
+    // var langs = $('.skiptranslate:first').contents().find('td a');
+    var langs =  $('iframe').eq(d).contents().find('td a');
+
+     //the number of the language in flag-elements
+    var placement = $(this).data('placement');
+// alert(placement);
+ //this again I need to adjust the mapping numbers of the languages in the flag elements        
+    if (clickCount == 0){
+        placement = $(this).data('placement');
+        clickCount++;
+        }
+    //and finaly imitate click on the gtranslate element which is the same as the number of the language in flag link
+    langs.eq(placement).find('span.text').click();
+    return false;
+
+});
+});
+</script>
+</body>
+</html>

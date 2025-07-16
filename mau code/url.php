@@ -1,0 +1,1 @@
+echo '<script>alert("Bạn tạo công việc con thành công.");location.href = "'.$_SERVER['REQUEST_URI'].'";</script>';
